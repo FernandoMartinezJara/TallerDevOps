@@ -14,9 +14,9 @@ Taller practico correspondiente al diploma calidad de software impartido por la 
 Santiago, Noviembre 2018.
 
 # 2.Integrantes
-Fernando Martínez
-Oscar Silva
-José Vega
+Fernando Martínez,
+Oscar Silva,
+José Vega,
 Javier Yevenez
 
 # 3.Objetivo
