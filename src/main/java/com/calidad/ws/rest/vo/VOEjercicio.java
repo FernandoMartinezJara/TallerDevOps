@@ -3,7 +3,8 @@ package com.calidad.ws.rest.vo;
 public class VOEjercicio {
 
 	private String pregunta;
-	private String fuente;
+	private String codigo;
+	//private int idejercicio;
 	
 	
 	public String getPregunta() {
@@ -12,11 +13,11 @@ public class VOEjercicio {
 	public void setPregunta(String pregunta) {
 		this.pregunta = pregunta;
 	}
-	public String getFuente() {
-		return fuente;
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setFuente(String fuente) {
-		this.fuente = fuente;
+	public void setCodigo(String fuente) {
+		this.codigo = fuente;
 	}	
 	
 }
