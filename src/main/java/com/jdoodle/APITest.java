@@ -13,7 +13,7 @@ public class APITest {
 
         String clientId = "62cec4c1cbe7942994dc5866ad095203"; //Replace with your client ID
         String clientSecret = "9807a912174b396c344d9978282a9703bb3239b50fbc1112dff88a67e625263a"; //Replace with your client Secret
-        String script = "x=10; y=25; z=x+y; print 'Sum of x+y =', z;";
+        String script = "x=10; y=25; z=x+y; print 'Sum of x+y =', z;"; 
         String language = "python2";
         String versionIndex = "0";
 
