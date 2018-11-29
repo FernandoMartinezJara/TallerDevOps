@@ -8,12 +8,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.calidad.ws.rest.vo.VOEjercicio;
+
 public class APITest {
-    public static void main(String args[]) {
+	
+	String salida;
+	
+    public APITest(VOEjercicio obj) {
 
         String clientId = "62cec4c1cbe7942994dc5866ad095203"; //Replace with your client ID
         String clientSecret = "9807a912174b396c344d9978282a9703bb3239b50fbc1112dff88a67e625263a"; //Replace with your client Secret
-        String script = "x=10; y=25; z=x+y; print 'Sum of x+y =', z;"; 
+        //String script = "x=10; y=25; z=x+y; print 'Sum of x+y =', z;"; 
+        String script = obj.getCodigo();
         String language = "python2";
         String versionIndex = "0";
 
@@ -45,6 +51,7 @@ public class APITest {
             System.out.println("Output from JDoodle .... \n");
             while ((output = bufferedReader.readLine()) != null) {
                 System.out.println(output);
+                salida = output;
             }
 
             connection.disconnect();
@@ -54,5 +61,9 @@ public class APITest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String getRespuesta() {
+        return salida;
     }
 }
