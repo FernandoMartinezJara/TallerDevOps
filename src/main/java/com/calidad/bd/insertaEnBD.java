@@ -8,46 +8,46 @@ import java.sql.SQLException;
 import com.calidad.ws.rest.vo.VOEjercicio;
 
 public class insertaEnBD {
-	
+
 	public void InsertarEjercicio(VOEjercicio objEjercicio) throws IOException {
 
 
-	PreparedStatement ps = null;
-	Connection conn = null;
-	String insertTableSQL = "INSERT INTO Taller.Ejercicio"
-			+ "(pregunta,ejercicio,tipo) VALUES"
-			+ "(?,?,?)";
+		PreparedStatement ps = null;
+		Connection conn = null;
+		String insertTableSQL = "INSERT INTO Taller.Ejercicio"
+				+ "(pregunta,ejercicio,tipo) VALUES"
+				+ "(?,?,?)";
 
-	try {
+		try {
 
-		ConexionBD conexion = new ConexionBD();
-		conn = conexion.getConnection();
-		ps = conn.prepareStatement(insertTableSQL);
+			ConexionBD conexion = new ConexionBD();
+			conn = conexion.getConnection();
+			ps = conn.prepareStatement(insertTableSQL);
 
-		ps.setString(1, objEjercicio.getPregunta());
-		ps.setString(2, objEjercicio.getCodigo());
-		ps.setString(3, "tipo desde java");
-		
-		 // execute insert SQL stetement
-		ps.executeUpdate();
+			ps.setString(1, objEjercicio.getPregunta());
+			ps.setString(2, objEjercicio.getCodigo());
+			ps.setString(3, "tipo desde java");
 
-        System.out.println("Record is inserted into DBUSER table!");
+			// execute insert SQL stetement
+			ps.executeUpdate();
 
-		//Catch para atrapar alguna excepción de SQL
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			System.out.println("Record is inserted into DBUSER table!");
 
-		//Bloque finally para cerrar la conexión
-	}finally{
-		if (conn!=null){
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+
+		}finally{
+			if (conn!=null){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		}
-	}	
+		}	
 	}
 }

@@ -17,7 +17,6 @@ public class listarEjercicio {
 		Connection conn = null;
 		try {
 
-			// Establecer conexión con la base de datos
 			ConexionBD conexion = new ConexionBD();
 			String where = (id == 0 ? " ORDER BY RAND() LIMIT 1;" : " where id = "+id);
 			conn = conexion.getConnection();
@@ -37,7 +36,7 @@ public class listarEjercicio {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 
-			//Bloque finally para cerrar la conexión
+			
 		}finally{
 			if (conn!=null){
 				try {
