@@ -43,6 +43,7 @@ public class ConexionBD {
         
         	//Abrimos conexión a base de datos
     		//conn = DriverManager.getConnection(props.getProperty("url"), props);
+        	DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
         	conn = DriverManager.getConnection("jdbc:mysql://104.198.185.19:3306/Taller?autoReconnect=true&useSSL=false", "root", "k.ndP9yT");
             System.out.println("Conexión realizada a la base de datos con éxito.");
         }  catch (SQLException e) {
