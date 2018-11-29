@@ -4,8 +4,9 @@ public class VOEjercicio {
 
 	private String pregunta;
 	private String codigo;
-	private int idejercicio;
+	private int id;
 	
+
 	public int getIdejercicio(){
 		return idejercicio;
 	}
@@ -21,8 +22,15 @@ public class VOEjercicio {
 	public String getCodigo() {
 		return codigo;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setCodigo(String fuente) {
 		this.codigo = fuente;
 	}	
+	
 	
 }
