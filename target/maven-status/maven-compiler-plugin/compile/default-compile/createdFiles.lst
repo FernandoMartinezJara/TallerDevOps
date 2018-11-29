@@ -1,7 +1,0 @@
-com\calidad\bd\ConexionBD.class
-com\jdoodle\APITest.class
-com\calidad\bd\listarEjercicio.class
-com\calidad\ws\rest\vo\VOEjercicio.class
-com\calidad\ws\rest\service\ServiceEjercicio.class
-com\calidad\bd\JavaMysqlEjemplo.class
-com\calidad\bd\insertaEnBD.class

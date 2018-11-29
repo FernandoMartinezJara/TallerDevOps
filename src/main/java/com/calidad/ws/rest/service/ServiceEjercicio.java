@@ -11,7 +11,9 @@ import javax.ws.rs.core.MediaType;
 
 import com.calidad.bd.insertaEnBD;
 import com.calidad.bd.listarEjercicio;
+import com.calidad.bd.listarTodo;
 import com.calidad.ws.rest.vo.VOEjercicio;
+import com.calidad.ws.rest.vo.VOValidaEjercicio;
 import com.jdoodle.APITest;
 
 @Path("/Taller")
@@ -46,30 +48,30 @@ public class ServiceEjercicio {
 		
 	}
 
-	@POST
+	@GET
 	@Path("/listaEjercicios")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
 	public ArrayList<VOEjercicio> listaEjercicios() {
-		VOEjercicio ejercicio = new VOEjercicio();
-		ejercicio.setCodigo("Ejemplo");
-		ejercicio.setPregunta("Pregunta ejemplo");
-
-		ArrayList<VOEjercicio> l = new ArrayList<VOEjercicio>();
-		l.add(ejercicio);
-
-		return l;
+		listarTodo ejercicios = null;
+		try {
+			ejercicios = new listarTodo();			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ejercicios.getEjercicios();	
 	}
 
 	@POST
 	@Path("/validarEjercicios")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public String validarEjercicios(int id) {
+	public String validarEjercicios(VOValidaEjercicio id) {
 		listarEjercicio le = null;
 		APITest ve = null;
 		try {
-			le = new listarEjercicio(id);
+			le = new listarEjercicio(id.getId());
 			ve = new APITest(le.getEjercicio());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
