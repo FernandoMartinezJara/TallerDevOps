@@ -6,7 +6,13 @@ public class VOEjercicio {
 	private String codigo;
 	private int id;
 	
-	
+
+	public int getIdejercicio(){
+		return idejercicio;
+	}
+	public void setIdejercicio(int idejercicio){
+		this.idejercicio=idejercicio;
+	}
 	public String getPregunta() {
 		return pregunta;
 	}
