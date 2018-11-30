@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import com.calidad.bd.insertaEnBD;
 import com.calidad.bd.listarEjercicio;
 import com.calidad.bd.listarTodo;
+import com.calidad.ws.rest.vo.RespuestaValida;
 import com.calidad.ws.rest.vo.VOEjercicio;
 import com.calidad.ws.rest.vo.VOValidaEjercicio;
 import com.jdoodle.APITest;
@@ -67,12 +68,12 @@ public class ServiceEjercicio {
 	@Path("/validarEjercicios")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public String validarEjercicios(VOValidaEjercicio id) {
+	public RespuestaValida validarEjercicios(VOValidaEjercicio id) {
 		listarEjercicio le = null;
 		APITest ve = null;
 		try {
 			le = new listarEjercicio(id.getId());
-			ve = new APITest(le.getEjercicio());
+			ve = new APITest(le.getEjercicio(),id);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

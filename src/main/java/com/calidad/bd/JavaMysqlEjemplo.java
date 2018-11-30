@@ -23,7 +23,7 @@ public class JavaMysqlEjemplo {
 		APITest ve = null;
 		try {
 			le = new listarEjercicio(2);
-			ve = new APITest(le.getEjercicio());
+			//ve = new APITest(le.getEjercicio());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

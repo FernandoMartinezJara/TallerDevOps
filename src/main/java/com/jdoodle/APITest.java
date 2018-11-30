@@ -7,14 +7,20 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
+import com.calidad.ws.rest.vo.RespuestaValida;
 import com.calidad.ws.rest.vo.VOEjercicio;
+import com.calidad.ws.rest.vo.VOValidaEjercicio;
 
 public class APITest {
 	
 	String salida;
+	RespuestaValida rep = new RespuestaValida();
 	
-    public APITest(VOEjercicio obj) {
+    public APITest(VOEjercicio obj, VOValidaEjercicio objVe) {
 
         String clientId = "62cec4c1cbe7942994dc5866ad095203"; //Replace with your client ID
         String clientSecret = "9807a912174b396c344d9978282a9703bb3239b50fbc1112dff88a67e625263a"; //Replace with your client Secret
@@ -53,7 +59,18 @@ public class APITest {
                 System.out.println(output);
                 salida = output;
             }
-
+            
+            ObjectMapper mapper = new ObjectMapper();
+            Map<String,Object> map = mapper.readValue(salida, Map.class);
+            
+            System.out.println(map.get("output"));
+            
+            rep.setValor((String) map.get("output"));
+            if( ((String) map.get("output")).trim().equals(objVe.getRespuesta().trim())) {
+            	rep.setRespuesta("Correcto");
+            }else {
+            	rep.setRespuesta("Incorrecto");
+            }
             connection.disconnect();
 
         } catch (MalformedURLException e) {
@@ -63,7 +80,7 @@ public class APITest {
         }
     }
     
-    public String getRespuesta() {
-        return salida;
+    public RespuestaValida getRespuesta() {
+        return rep;
     }
 }
