@@ -68,8 +68,10 @@ public class APITest {
             rep.setValor((String) map.get("output"));
             if( ((String) map.get("output")).trim().equals(objVe.getRespuesta().trim())) {
             	rep.setRespuesta("Correcto");
+            	rep.setEsCorrecto(true);
             }else {
             	rep.setRespuesta("Incorrecto");
+            	rep.setEsCorrecto(false);
             }
             connection.disconnect();
 

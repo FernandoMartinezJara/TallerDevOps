@@ -4,6 +4,7 @@ public class RespuestaValida {
 
 	private String respuesta;
 	private String valor;
+	private Boolean esCorrecto;
 	
 	public String getRespuesta() {
 		return respuesta;
@@ -17,6 +18,12 @@ public class RespuestaValida {
 	public void setValor(String valor) {
 		this.valor = valor;
 	}
+	public Boolean getEsCorrecto() {
+		return esCorrecto;
+	}
+	public void setEsCorrecto(Boolean esCorrecto) {
+		this.esCorrecto = esCorrecto;
+	}	
 	
 	
 }
