@@ -26,7 +26,7 @@ public class ConexionBD {
         	is.close();
     		//conn = DriverManager.getConnection(props.getProperty("url"), props);
         	DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
-        	conn = DriverManager.getConnection("jdbc:mysql://104.198.185.19:3306/Taller?autoReconnect=true&useSSL=false", "root", "k.ndP9yT");            
+        	conn = DriverManager.getConnection("jdbc:mysql://35.239.88.179:3306/Taller?autoReconnect=true&useSSL=false", "root", "k.ndP9yT");            
         }  catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
