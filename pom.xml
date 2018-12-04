@@ -9,12 +9,12 @@
 	<name>TallerDevOps Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
-  			<scope>test</scope>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -37,62 +37,86 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.47</version>
-		</dependency> 
-		
+		</dependency>
+
 	</dependencies>
-	
+
 	<properties>
-    <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-    <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
-  </properties>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+	</properties>
 
 	<build>
-		
+
 		<finalName>TallerDevOps</finalName>
-		
+
 		<plugins>
-		   <plugin>
-	        <groupId>org.jacoco</groupId>
-	        <artifactId>jacoco-maven-plugin</artifactId>
-	        <version>0.6.5.201403032054</version>
-	        <configuration>
-	          <propertyName>jacoco.agent.argLine</propertyName>
-	          <destFile>${sonar.jacoco.itReportPath}</destFile>
-	          <append>true</append>
-	        </configuration>
-	        <executions>
-	          <execution>
-	            <id>agent</id>
-	            <goals>
-	              <goal>prepare-agent</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-	      </plugin>
-	      <plugin>
-	        <artifactId>maven-failsafe-plugin</artifactId>
-	        <version>2.14.1</version>
-	        <dependencies>
-	          <dependency>
-	            <groupId>org.apache.maven.surefire</groupId>
-	            <artifactId>surefire-junit47</artifactId>
-	            <version>2.14.1</version>
-	          </dependency>
-	        </dependencies>
-	        <configuration>
-	          <argLine>${jacoco.agent.argLine}</argLine>
-	          <testFailureIgnore>true</testFailureIgnore>
-	          <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-	        </configuration>
-	        <executions>
-	          <execution>
-	            <goals>
-	              <goal>integration-test</goal>
-	              <goal>verify</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-	      </plugin>
-	  </plugins>
+
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.14.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.14.1</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.6.5.201403032054</version>
+				<configuration>
+					<propertyName>jacoco.agent.argLine</propertyName>
+					<destFile>${sonar.jacoco.itReportPath}</destFile>
+					<append>true</append>
+				</configuration>
+				<executions>
+					<execution>
+						<id>agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.14.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.14.1</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<argLine>${jacoco.agent.argLine}</argLine>
+					<testFailureIgnore>true</testFailureIgnore>
+					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>
