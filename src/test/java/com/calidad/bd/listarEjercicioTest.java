@@ -17,8 +17,8 @@ public class listarEjercicioTest {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		le.getEjercicio().getId();
+		}		
+		System.out.println("....testListarEjercicio....");
 		Assert.assertNotNull(le.getEjercicio());	
 	}
 
@@ -32,7 +32,7 @@ public class listarEjercicioTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		le.getEjercicio().getId();
+		System.out.println("....testGetEjercicio....");
 		Assert.assertNotNull(le.getEjercicio());	
 	}
 
