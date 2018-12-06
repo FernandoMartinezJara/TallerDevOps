@@ -42,81 +42,68 @@
 	</dependencies>
 
 	<properties>
-		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-		<sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
-	</properties>
+		<jacoco.agent.argLine></jacoco.agent.argLine>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+</properties>
 
 	<build>
 
 		<finalName>TallerDevOps</finalName>
 
 		<plugins>
-
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.14.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.surefire</groupId>
-						<artifactId>surefire-junit47</artifactId>
-						<version>2.14.1</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.6.5.201403032054</version>
-				<configuration>
-					<propertyName>jacoco.agent.argLine</propertyName>
-					<destFile>${sonar.jacoco.itReportPath}</destFile>
-					<append>true</append>
-				</configuration>
-				<executions>
-					<execution>
-						<id>agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.14.1</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.surefire</groupId>
-						<artifactId>surefire-junit47</artifactId>
-						<version>2.14.1</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<argLine>${jacoco.agent.argLine}</argLine>
-					<testFailureIgnore>true</testFailureIgnore>
-					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+    <!-- JaCoCo code coverage plugin -->
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.1.201405082137</version>
+        <configuration>
+            <propertyName>jacoco.agent.argLine</propertyName>
+            <append>true</append>
+            <formats>
+                <format>html</format>
+                <format>xml</format>
+            </formats>
+        </configuration>
+        <executions>
+            <execution>
+                <id>jacoco-surefire</id>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+                <configuration>
+                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                </configuration>
+            </execution>
+            <execution>
+                <id>jacoco-failsafe</id>
+                <goals>
+                    <goal>prepare-agent-integration</goal>
+                </goals>
+                <configuration>
+                    <destFile>${sonar.jacoco.itReportPath}</destFile>
+                </configuration>
+            </execution>
+            <execution>
+                <id>report</id>
+                <phase>prepare-package</phase>
+                <goals>
+                    <goal>report</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+    
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+            <formats>
+                <format>html</format>
+                <format>xml</format>
+            </formats>
+        </configuration>
+    </plugin>
+</plugins>
 	</build>
 </project>
