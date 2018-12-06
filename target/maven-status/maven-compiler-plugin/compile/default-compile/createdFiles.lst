@@ -1,0 +1,10 @@
+com\calidad\ws\rest\vo\VOValidaEjercicio.class
+com\calidad\bd\ConexionBD.class
+com\calidad\ws\rest\vo\RespuestaValida.class
+com\jdoodle\APITest.class
+com\calidad\bd\listarEjercicio.class
+com\calidad\ws\rest\vo\VOEjercicio.class
+com\calidad\bd\listarTodo.class
+com\calidad\ws\rest\service\ServiceEjercicio.class
+com\calidad\bd\JavaMysqlEjemplo.class
+com\calidad\bd\insertaEnBD.class
