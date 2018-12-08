@@ -23,7 +23,7 @@ public class TestTaller {
   public void setUp() throws Exception {
 	  
 	//if you didn't update the Path system variable to add the full directory path to the executable as above mentioned then doing this directly through code
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
 		//Now you can Initialize marionette driver to launch firefox
 		/*DesiredCapabilities capabilities = DesiredCapabilities.firefox();
