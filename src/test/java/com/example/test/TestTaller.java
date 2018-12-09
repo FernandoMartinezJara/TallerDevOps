@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -25,12 +26,16 @@ public class TestTaller {
 	//if you didn't update the Path system variable to add the full directory path to the executable as above mentioned then doing this directly through code
 		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
+		
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("useAutomationExtension", false);
+		
 		//Now you can Initialize marionette driver to launch firefox
 		/*DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setCapability("marionette", true);
 		WebDriver driver = new MarionetteDriver(capabilities);*/ 
 		
-    driver = new ChromeDriver();
+    driver = new ChromeDriver(options);
     baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
