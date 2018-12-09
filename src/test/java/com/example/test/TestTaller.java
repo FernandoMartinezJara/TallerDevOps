@@ -28,7 +28,10 @@ public class TestTaller {
 
 		
 		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("useAutomationExtension", false);
+		String arguments = "--headless";
+		options.addArguments(arguments);
+		
+		//options.setExperimentalOption("useAutomationExtension", false);
 		
 		//Now you can Initialize marionette driver to launch firefox
 		/*DesiredCapabilities capabilities = DesiredCapabilities.firefox();
