@@ -33,7 +33,7 @@ public class listarTodoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		System.out.println("....testGetEjercicios....");
+		System.out.println("....testGetEjercicios 222222....");
 		Assert.assertNotNull(ejercicios.getEjercicios());	
 	}
 
