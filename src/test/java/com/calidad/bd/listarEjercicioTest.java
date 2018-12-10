@@ -19,7 +19,8 @@ public class listarEjercicioTest {
 			e.printStackTrace();
 		}		
 		System.out.println("....testListarEjercicio....");
-		Assert.assertNotNull(le.getEjercicio());	
+		Assert.assertNotNull(null);
+		//Assert.assertNotNull(le.getEjercicio());	
 	}
 
 	@Test
